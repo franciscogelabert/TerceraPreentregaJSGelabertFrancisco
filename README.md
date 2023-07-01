@@ -1,6 +1,6 @@
 # Foodier
 
-*Segunda PreEntrega JavaScript - Gelabert Francisco - JS Comisión 52245 | Coderhouse*
+*Tercera PreEntrega JavaScript - Gelabert Francisco - JS Comisión 52245 | Coderhouse*
 
 ## 01- Datos para acceder a la entrega
 
