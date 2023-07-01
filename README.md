@@ -6,11 +6,11 @@
 
 **Github**
 
-https://franciscogelabert.github.io/SegundaPreentregaJSGelabertFrancisco/
+https://franciscogelabert.github.io/TerceraPreentregaJSGelabertFrancisco/
 
 **Deploy Vercel**
 
-https://segunda-preentrega-js-gelabert-francisco.vercel.app/
+https://tercera-preentrega-js-gelabert-francisco.vercel.app/
 
 ## 02- Descripción Segunda entrega
 
