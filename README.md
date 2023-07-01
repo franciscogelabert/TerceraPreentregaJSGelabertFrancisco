@@ -6,7 +6,7 @@
 
 **Github**
 
-https://franciscogelabert.github.io/TerceraPreentregaJSGelabertFrancisco-/
+https://franciscogelabert.github.io/TerceraPreentregaJSGelabertFrancisco/
 
 **Deploy Vercel**
 
