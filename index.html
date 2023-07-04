@@ -1,25 +1,271 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="./css/style.css" rel="stylesheet"> 
-  <link rel="icon" href="./img/ico/favicon.ico">
-	<title>Cálculo de calorías</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<title>Reporte Alimenticio | Foodier comencemos a buscar algo bien rico.</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="./css/boost.css">
+	<link rel="icon" href="./img/ico/favicon.ico">
 	<meta name="description" content="Permite mensurar las calorías, grasas totales, etc. de las recetas ingresadas por los usuarios">
 	<meta name="author" content="Francisco Gelabert">
 	<meta name="keywords" content="red social de recetas, recetas, comida, chef, restaurant, cocinera, cocinero">
 	<meta name="copyright" content="Foodier S.A. 2023">
+	<meta name="robots" content="index,follow">
 </head>
+
 <body>
-  <script src="./js/Receta.js"></script>
-  <script src="./js/Trago.js"></script>
-  <script src="./js/Persona.js"></script>
-  <script src="./js/Alimento.js"></script>
-  <script src="./js/Bebida.js"></script>
-  <script src="./js/app.js"></script>
+	<!-- Nav Start -->
+	<header class="d-none d-sm-none d-md-block">
+		<div class="card text-bg-dark">
+			<img src="./img/header/hpublicar.PNG" class="object-fit w-100" alt="Encabezado que muestra diferentes ingredientes como se porotos, tomates, avena entre otros.">
+			<div class="card-img-overlay">
+				<a class="nav-link active text-white fs-5" aria-current="page" href="visitarperfilGrid.html">
+					<img src="./img/content/perfil.jpg" class="img-thumbnail circle" alt="Foto de Perfil"></a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<!-- Form para Publicar -->
+		<h1>Vida Saludable</h1>
+		<h2>Análisis alimenticio de tu receta</h2>
+		<div class="row">
+			<div class="mx-auto col-10 col-md-8 col-lg-6">
+				<p> A continuación te proporcionamos una tabla que puedas revisar de manera más detallada la distribución
+					diaria y semanal de los alimentos.
+
+					También es interesante que te fijes en el tamaño de las raciones. Revisa con la ayuda de esta tabla si las
+					cantidades que anotaste en tu tabla de planificación semanal, son las adecuadas.</p>
+
+				<h3>Paso 1. Ingrese los Ingredientes de su receta</h3>
+				<form>
+					<div class="form-group mb-3 mt-3">
+						<label for="ingrediente" class="col-sm-6 col-form-label fs-5">Ingrediente:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="ingrediente">
+						</div>
+					</div>
+
+					<div class="form-group mb-3 mt-3">
+						<label for="precio" class="col-sm-6 col-form-label fs-5">Precio: ($ cada 100 gr)</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="precio">
+						</div>
+					</div>
+
+					<div class="form-group mb-3 mt-3">
+						<label for="cantidad" class="col-sm-6 col-form-label fs-5">Cantidad: (en gramos)</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="cantidad">
+						</div>
+					</div>
+
+					<div class="form-group mb-3 mt-3">
+						<label for="calorias" class="col-sm-6 col-form-label fs-5">Calorías: (cada 100 gr)</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="calorias">
+						</div>
+					</div>
+
+					<div class="form-group mb-3 mt-3">
+						<label for="sodio" class="col-sm-6 col-form-label fs-5">Sodio: (cada 100 gr)</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="sodio">
+						</div>
+					</div>
+
+					<div class="form-group mb-3 mt-3">
+						<label for="grasas" class="col-sm-6 col-form-label fs-5">Grasas: (cada 100 gr)</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="grasas">
+						</div>
+					</div>
+					<div class="d-flex justify-content-end col-sm-10">
+						<button id="publicar" type="submit" class="button">Agregar </button>
+						<button type="reset" class="button"> Cancelar </button>
+					</div>
+				</form>
+
+				<!-- Div food table -->
+				<h3>Paso 2. Verifique los datos y presione Finalizar para ver el Reporte</h3>
+				<div class="bg-light">
+					<h4>Tabla de Ingredientes: </h4>
+					<div class="table-responsive">
+						<table class="table table-striped-columns table-hover mb-3">
+							<tr>
+								<th>Ingrediente</th>
+								<th>Precio</th>
+								<th>Cantidad</th>
+								<th>Calorías</th>
+								<th>Sodio</th>
+								<th>Grasas</th>
+								<th></th>
+							</tr>
+							<tr>
+								<td>Berenjena</td>
+								<td>65</td>
+								<td>12</td>
+								<td>10</td>
+								<td>11</td>
+								<td>12</td>
+								<td>
+									<a href="404.html" Title="Eliminar">
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash smallimagebox colorDelete"
+										 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M4 7l16 0"></path>
+											<path d="M10 11l0 6"></path>
+											<path d="M14 11l0 6"></path>
+											<path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+											<path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+										</svg>
+									</a>
+								</td>
+							<tr>
+								<td>Naranja</td>
+								<td>20</td>
+								<td>33</td>
+								<td>45</td>
+								<td>46</td>
+								<td>12</td>
+								<td>
+									<a href="404.html" Title="Eliminar">
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash smallimagebox colorDelete"
+										 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M4 7l16 0"></path>
+											<path d="M10 11l0 6"></path>
+											<path d="M14 11l0 6"></path>
+											<path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+											<path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+										</svg>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Pan Integral</td>
+								<td>34</td>
+								<td>21</td>
+								<td>65</td>
+								<td>66</td>
+								<td>67</td>
+								<td>
+									<a href="404.html" Title="Eliminar">
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash smallimagebox colorDelete"
+										 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M4 7l16 0"></path>
+											<path d="M10 11l0 6"></path>
+											<path d="M14 11l0 6"></path>
+											<path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+											<path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+										</svg>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Café</td>
+								<td>56</td>
+								<td>34</td>
+								<td>87</td>
+								<td>88</td>
+								<td>89</td>
+								<td>
+									<a href="404.html" Title="Eliminar">
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash smallimagebox colorDelete"
+										 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M4 7l16 0"></path>
+											<path d="M10 11l0 6"></path>
+											<path d="M14 11l0 6"></path>
+											<path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+											<path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+										</svg>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>Leche</td>
+								<td>20</td>
+								<td>11</td>
+								<td>23</td>
+								<td>12</td>
+								<td>25</td>
+								<td>
+									<a href="404.html" Title="Eliminar">
+										<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash smallimagebox colorDelete"
+										 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M4 7l16 0"></path>
+											<path d="M10 11l0 6"></path>
+											<path d="M14 11l0 6"></path>
+											<path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+											<path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+										</svg>
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div><!-- End Div food table -->
+
+
+				<div class="d-flex justify-content-end col-sm-10">
+					<button id="publicar" type="submit" class="button">Finalizar </button>
+					<button type="reset" class="button"> Cancelar </button>
+				</div>
+
+
+				<!-- Div Reporte-->
+				<h3>Reporte Alimenticio</h3>
+				<div class="bg-light">
+					<div class="table-responsive">
+						<table class="table table-striped-columns table-hover mb-3">
+							<tr>
+								<th>Total</th>
+								<th>Cantidad</th>
+							</tr>
+							<tr>
+								<td>Precio</td>
+								<td>2000</td>
+							</tr>
+							<tr>
+								<td>Calorias</td>
+								<td>3000</td>
+							</tr>
+							<tr>
+								<td>Sodio</td>
+								<td>200</td>
+							</tr>
+							<tr>
+								<td>Grasas</td>
+								<td>200</td>
+							</tr>
+						</table>
+					</div>
+				</div><!-- End Div reporte -->
+				<div class="d-flex justify-content-end col-sm-10">
+					<button id="nuevo" type="reset" class="button">Nuevo reporte</button>
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- Footer tener en cuenta que presenta diferentes formatos dependiendo la resolución -->
+	<footer>
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+	 crossorigin="anonymous"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="./js/Receta.js"></script>
+	<script src="./js/Trago.js"></script>
+	<script src="./js/Persona.js"></script>
+	<script src="./js/Alimento.js"></script>
+	<script src="./js/Bebida.js"></script>
+	<script src="./js/app.js"></script>
 </body>
+
 </html>
-
-
