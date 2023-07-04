@@ -128,7 +128,7 @@ function reporteAlimenticio() {
         console.log('------------------------------------------------------------------------------------------');
 
         cantidad = parseInt(prompt('--> Cantidad total en ' + unidades + ': '));
-        precio = parseFloat(prompt('--> Precio del item cada 100 : '));
+        precio = parseFloat(prompt('--> Precio total : '));
         calorias = parseInt(prompt('--> Calorías cada 100 ' + unidades + ': '));
         sodio = parseInt(prompt('--> Sodio cada 100 ' + unidades + ': '));
 
@@ -138,7 +138,6 @@ function reporteAlimenticio() {
 
         } else {
             alcohol = parseInt(prompt('--> Graduación alcohólica (%) : '));
-
         }
 
         // almacena el item en la lista que le corresponde

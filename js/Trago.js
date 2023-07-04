@@ -28,7 +28,7 @@ constructor (nombre,ingredientes,origen) {
         this.calorias = this.calorias + iCantidad / 100 * iCalorias;
         this.sodio =this.sodio + iCantidad / 100 * iSodio;
         this.alcohol = this.alcohol + iAlcohol;
-        this.precio =this.precio + iCantidad / 100 * iPrecio;
+        this.precio =this.precio + iPrecio;
     }
     this.alcohol = this.alcohol /r.length;
 }
