@@ -1,5 +1,5 @@
 
-const recipe = [];
+let recipe = [];
 
 const tablaIngredientes = document.getElementById("tablaAlimentos");
 tablaIngredientes.addEventListener("click", verificaAccion);
@@ -25,7 +25,6 @@ function cargarIngrediente() {
 
     const alimento1 = new Alimento(nombre, precio, cantidad, calorias, sodio, grasas);
     recipe.push(alimento1);
-    console.log(alimento1);
     const fila = `<tr>
     <td>${alimento1.nombre}</td>
     <td>${alimento1.precio}</td>
@@ -45,11 +44,10 @@ function verificaAccion(elemento) {
     if (elemento.target.matches(".accionEliminar")) {
         const indice = elemento.target.parentNode.parentNode.rowIndex;
         tablaIngredientes.deleteRow(indice - 1);
-        console.log(recipe.length);
-        recipe.slice(indice, 1);
-        console.log(recipe.length);
-        console.log(recipe);
-    }
+        recipe.splice(indice-1,1);
+        //console.log(recipe.length);
+        //console.log(recipe);
+        }
 
 }
 
@@ -59,34 +57,36 @@ function verificaAccion(elemento) {
 // dibujar la tabla  
 
 
-
-
 function calcularTotales() {
     let nombreReceta = document.getElementById("nombreReceta").value;
     let origenReceta = document.getElementById("origen").value;
     const receta1 = new Receta(nombreReceta, recipe, origenReceta);
     dibujaTablaTotales(receta1.mostrar());
-    deshabilitar("btnTotales");
-    deshabilitar("publicar");
-    deshabilitarClase("accionEliminar");
+    //deshabilitar("btnTotales");
+    //deshabilitar("publicar");
+   
 }
 
 
 function deshabilitarClase(nombreClase)
 {
     const lista=[];
-    //lista=document.getElementsByClassName(nombreClase);
+    lista=document.getElementsByClassName(nombreClase);
     console.log(document.getElementsByClassName(nombreClase));
-   // lista.forEach(element => element.disable=true);
+    lista.forEach(element => element.disable=true);
 }
 
 
 function dibujaTablaTotales(cantidades) {
 
+    document.getElementById("totalesHead").innerHTML="";
+    document.getElementById("totalesValores").innerHTML="";
+    
     var titulo = "<tr><th>Cantidad Total</th><th>Total</th></tr>";
     var btnT = document.createElement("TR");
     btnT.innerHTML = titulo;
     document.getElementById("totalesHead").appendChild(btnT);
+   
 
     for (let i = 0; i < cantidades.length; i++) {
         var fila = "<tr><td>" + cantidades[i].descripcion + "</td><td>" + cantidades[i].cantidad + "</td><td>";
@@ -94,6 +94,7 @@ function dibujaTablaTotales(cantidades) {
         btn.innerHTML = fila;
         document.getElementById("totalesValores").appendChild(btn);
     }
+    
 }
 
 function deshabilitar(nombreBtn) {
