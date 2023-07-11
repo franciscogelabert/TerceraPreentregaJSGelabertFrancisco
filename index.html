@@ -45,7 +45,7 @@
 					cantidades que anotaste en tu tabla de planificación semanal, son las adecuadas.</p>
 
 				<h3>Paso 1. Ingrese los datos de su receta</h3>
-				<form>
+				<form id="freceta"> 
 					<div class="form-group mb-3 mt-3">
 						<label for="nombreReceta" class="col-sm-6 col-form-label fs-5">Nombre Receta:</label>
 						<div class="col-sm-10">
@@ -61,7 +61,7 @@
 				</form>
 
 				<h3>Paso 2. Ingrese los Ingredientes de su receta</h3>
-				<form>
+				<form id="fingredientes">
 
 					<div class="form-group mb-3 mt-3">
 						<label for="ingrediente" class="col-sm-6 col-form-label fs-5">Ingrediente:</label>
@@ -106,7 +106,7 @@
 
 				</form>
 				<div class="d-flex justify-content-end col-sm-10">
-					<button id="publicar" type="submit" class="button" onclick="cargarIngrediente();">Agregar </button>
+					<button id="publicar" type="submit" class="button">Agregar </button>
 				</div>
 
 				<!-- Div food table -->
