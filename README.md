@@ -12,7 +12,7 @@ https://franciscogelabert.github.io/TerceraPreentregaJSGelabertFrancisco/
 
 https://tercera-preentrega-js-gelabert-francisco.vercel.app/
 
-## 02- Descripción Segunda entrega
+## 02- Descripción Tercera entrega
 
 El objetivo es desarrollar una página con contendo relacionado a salud y alimentación.
 
