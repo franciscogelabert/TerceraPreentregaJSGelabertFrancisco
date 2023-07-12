@@ -19,7 +19,6 @@ class Receta {
 
         let r = []
         r = ingredientes;
-       
 
         for (let i = 0; i < r.length; i++) {
             iCantidad = parseInt(r[i].cantidad);
@@ -32,7 +31,7 @@ class Receta {
             this.sodio = this.sodio + iCantidad / 100 * iSodio;
             this.grasas = this.grasas + iCantidad / 100 * iGrasas;
             this.precio = this.precio + iPrecio;
-        }
+       }
 
     }
 
