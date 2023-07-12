@@ -30,7 +30,7 @@ class Receta {
             this.calorias = this.calorias + iCantidad / 100 * iCalorias;
             this.sodio = this.sodio + iCantidad / 100 * iSodio;
             this.grasas = this.grasas + iCantidad / 100 * iGrasas;
-            this.precio = this.precio + iPrecio;
+            this.precio = this.precio + iCantidad / 100 * iPrecio;
        }
 
     }
