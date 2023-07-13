@@ -1,7 +1,9 @@
 
 let recipe = [];
-let nombreReceta= "";
-let origen= "";
+let nombreReceta = "";
+let origen = "";
+let mensaje = false;
+
 
 
 actualizarPagina();
@@ -9,19 +11,19 @@ actualizarPagina();
 function actualizarPagina() {
 
     recipe = JSON.parse(localStorage.getItem('recipe'));
-    nombreReceta=document.getElementById("nombreReceta");
-    origen=document.getElementById("origen");
+    nombreReceta = document.getElementById("nombreReceta");
+    origen = document.getElementById("origen");
 
     nombreReceta.value = localStorage.getItem('nombreReceta');
     origen.value = localStorage.getItem('origen');
 
     if (recipe == null) {
-        recipe=[];
-    } 
-    else{
-    cargarTablaIngredientes();
-    calcularTotales();
-}
+        recipe = [];
+    }
+    else {
+        cargarTablaIngredientes();
+        calcularTotales();
+    }
 }
 
 // Formulario de Carga de Ingredientes
@@ -52,14 +54,15 @@ function limpiarFormulario(formulario) {
 };
 
 function cargarIngrediente() {
-    nombreReceta= document.getElementById("nombreReceta").value;
-    origen= document.getElementById("origen").value;
+    nombreReceta = document.getElementById("nombreReceta").value;
+    origen = document.getElementById("origen").value;
     let nombre = document.getElementById("ingrediente").value;
     let precio = document.getElementById("precio").value;
     let cantidad = document.getElementById("cantidad").value;
     let calorias = document.getElementById("calorias").value;
     let sodio = document.getElementById("sodio").value;
     let grasas = document.getElementById("grasas").value;
+
     let eliminar = `<svg xmlns="http://www.w3.org/2000/svg" class="accionEliminar icon icon-tabler icon-tabler-trash smallimagebox colorDelete" 
      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -71,11 +74,13 @@ function cargarIngrediente() {
     </svg>`;
 
     const alimento1 = new Alimento(nombre, precio, cantidad, calorias, sodio, grasas);
-    recipe.push(alimento1);
-    localStorage.setItem('nombreReceta', nombreReceta);
-    localStorage.setItem('origen', origen);
-    localStorage.setItem('recipe', JSON.stringify(recipe));
-    const fila = `<tr>
+
+    if (alimento1.valido() && nombreReceta !='' && origen !='') {
+        recipe.push(alimento1);
+        localStorage.setItem('nombreReceta', nombreReceta);
+        localStorage.setItem('origen', origen);
+        localStorage.setItem('recipe', JSON.stringify(recipe));
+        const fila = `<tr>
     <td>${alimento1.nombre}</td>
     <td>${alimento1.precio}</td>
     <td>${alimento1.cantidad}</td>
@@ -84,9 +89,22 @@ function cargarIngrediente() {
     <td>${alimento1.grasas}</td>
     <td>${eliminar}</td>
     </tr>`;
-    const btn = document.createElement("TR");
-    btn.innerHTML = fila;
-    document.getElementById("tablaAlimentos").appendChild(btn);
+        const btn = document.createElement("TR");
+        btn.innerHTML = fila;
+        document.getElementById("tablaAlimentos").appendChild(btn);
+        if (mensaje) {
+            document.getElementById("h3ing").firstElementChild.remove();
+            mensaje = false;
+        }
+    } else {
+        if (!mensaje) {
+            const agregado = document.createElement("p");
+            const fila = `**Debe completar todos los datos de la Receta**`;
+            agregado.innerHTML = fila;
+            document.getElementById("h3ing").append(agregado);
+            mensaje = true;
+        }
+    }
 }
 
 
@@ -104,7 +122,7 @@ function cargarTablaIngredientes() {
         <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
     </svg>`;
     tablaIngredientes.innerHTML = ``;
-    recipe.forEach((item,index) => {
+    recipe.forEach((item, index) => {
         const fila = `<tr>
     <td>${item.nombre}</td>
     <td>${item.precio}</td>
@@ -118,7 +136,7 @@ function cargarTablaIngredientes() {
         btn.innerHTML = fila;
         tablaIngredientes.appendChild(btn);
     })
-   }
+}
 
 function eliminarIngrediente(elemento) {
     if (elemento.target.matches(".accionEliminar")) {
@@ -132,7 +150,7 @@ function eliminarIngrediente(elemento) {
 function calcularTotales() {
     const receta1 = new Receta(nombreReceta, recipe, origen);
     dibujaTablaTotales(receta1.mostrar());
-}
+    }
 
 function dibujaTablaTotales(cantidades) {
     document.getElementById("totalesHead").innerHTML = "";
@@ -149,11 +167,10 @@ function dibujaTablaTotales(cantidades) {
         btn.innerHTML = fila;
         document.getElementById("totalesValores").appendChild(btn);
     }
-   
 }
 
 function nuevoReporte() {
     window.location.href = window.location.href;
     localStorage.clear();
-    
+
 }

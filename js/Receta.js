@@ -15,22 +15,18 @@ class Receta {
         this.grasas = 0;
         this.precio = 0;
 
-        let iCantidad, iCalorias, iSodio, iGrasas, iPrecio;
-
         let r = []
         r = ingredientes;
 
         for (let i = 0; i < r.length; i++) {
-            iCantidad = parseInt(r[i].cantidad);
-            iCalorias = parseInt(r[i].calorias);
-            iSodio = parseInt(r[i].sodio);
-            iGrasas = parseInt(r[i].grasas);
-            iPrecio = parseInt(r[i].precio);
-
-            this.calorias = this.calorias + iCantidad / 100 * iCalorias;
-            this.sodio = this.sodio + iCantidad / 100 * iSodio;
-            this.grasas = this.grasas + iCantidad / 100 * iGrasas;
-            this.precio = this.precio + iCantidad / 100 * iPrecio;
+        
+            // Prueba de Desestructuracion y Alias
+            let {cantidad, calorias, sodio, grasas, precio} = r[i];
+        
+            this.calorias = this.calorias + cantidad / 100 * calorias;
+            this.sodio = this.sodio + cantidad / 100 * sodio;
+            this.grasas = this.grasas + cantidad / 100 * grasas;
+            this.precio = this.precio + cantidad / 100 * precio;
        }
 
     }
@@ -60,4 +56,11 @@ class Receta {
         ]
         return cantidades;
     }
+
+    valido = function () {
+        const valido = this.nombre !='' && this.origen !='';
+        return valido;
+    }
+
+
 }
