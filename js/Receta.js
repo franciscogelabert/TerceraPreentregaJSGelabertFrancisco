@@ -5,6 +5,7 @@ class Receta {
     sodio;
     grasas;
     precio;
+    cantidad;
 
 
     constructor(nombre, ingredientes, origen) {
@@ -14,6 +15,7 @@ class Receta {
         this.sodio = 0;
         this.grasas = 0;
         this.precio = 0;
+        this.cantidad = 0;
 
         let r = []
         r = ingredientes;
@@ -27,6 +29,7 @@ class Receta {
             this.sodio = this.sodio + cantidad / 100 * sodio;
             this.grasas = this.grasas + cantidad / 100 * grasas;
             this.precio = this.precio + cantidad / 100 * precio;
+            this.cantidad = this.cantidad + cantidad;
        }
 
     }
@@ -36,6 +39,10 @@ class Receta {
 
         // la función Math.round()retorna el valor de un número redondeado al entero más cercano.
         let cantidades = [
+            {
+                descripcion: 'Cantidad',
+                cantidad: Math.round(this.cantidad)
+            },
             {
                 descripcion: 'Precio',
                 cantidad: Math.round(this.precio)

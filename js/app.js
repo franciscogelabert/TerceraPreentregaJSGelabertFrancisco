@@ -99,7 +99,7 @@ function cargarIngrediente() {
     } else {
         if (!mensaje) {
             const agregado = document.createElement("p");
-            const fila = `**Debe completar todos los datos de la Receta**`;
+            const fila = `** Para continuar debe completar todos los datos de la Receta **`;
             agregado.innerHTML = fila;
             document.getElementById("h3ing").append(agregado);
             mensaje = true;

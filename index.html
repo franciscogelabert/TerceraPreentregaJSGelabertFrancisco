@@ -36,18 +36,14 @@
 		<h2>Análisis alimenticio de tu receta</h2>
 		<div class="row">
 			<div class="mx-auto col-10 col-md-8 col-lg-6">
-				<p> A continuación te proporcionamos una tabla que puedas revisar de manera más detallada la
-					distribución
-					diaria y semanal de los alimentos.
+				<p> A continuación te proporcionamos una funcionalidad mediante la cual, podés ingresar todos los ingredientes de tu receta.
+					Nosotros nos ocupamos de calcular sus totales en calorías, sodio y grasas. 
+					Atento a esta información, también te queremos contar cuan saludable es en relación los criterios de alimentación actuales.</p>
 
-					También es interesante que te fijes en el tamaño de las raciones. Revisa con la ayuda de esta tabla
-					si las
-					cantidades que anotaste en tu tabla de planificación semanal, son las adecuadas.</p>
-
-				<h3 id="h3ing">Paso 1. Ingrese los datos de su receta</h3>
+				<h3>Paso 1. Ingrese los datos de su receta</h3>
 				<form id="freceta"> 
 					<div class="form-group mb-3 mt-3">
-						<label for="nombreReceta" class="col-sm-6 col-form-label fs-5">Nombre Receta:</label>
+						<label for="nombreReceta" class="col-sm-6 col-form-label fs-5">Nombre Receta: </label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="nombreReceta">
 						</div>
@@ -105,6 +101,9 @@
 					</div>
 
 				</form>
+				<div id="h3ing" style="color:red;">
+
+				</div>
 				<div class="d-flex justify-content-end col-sm-10">
 					<button id="publicar" type="submit" class="button">Agregar </button>
 				</div>
